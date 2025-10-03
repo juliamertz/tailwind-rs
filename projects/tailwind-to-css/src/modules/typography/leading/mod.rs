@@ -43,13 +43,13 @@ impl TailwindLeading {
     /// https://tailwindcss.com/docs/line-height
     pub fn parse(pattern: &[&str], arbitrary: &TailwindArbitrary) -> Result<Self> {
         match pattern {
-            ["none"] => scale(1.0),
-            ["tight"] => scale(1.25),
-            ["snug"] => scale(1.375),
+            ["none"] => rem(1.0),
+            ["tight"] => rem(1.25),
+            ["snug"] => rem(1.375),
             // different from tailwind.js
-            ["wide"] => scale(1.5),
-            ["wider" | "relaxed"] => scale(1.625),
-            ["widest" | "loose"] => scale(2.0),
+            ["wide"] => rem(1.5),
+            ["wider" | "relaxed"] => rem(1.625),
+            ["widest" | "loose"] => rem(2.0),
             // https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height#normal
             ["normal"] => Ok(Self { kind: LineHeight::Standard("normal".to_string()) }),
             [] => Self::parse_arbitrary(arbitrary),
